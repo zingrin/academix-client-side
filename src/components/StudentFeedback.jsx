@@ -25,10 +25,10 @@ const StudentFeedback = () => {
   return (
     <section className="bg-base-200 py-20">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-6 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-6 text-gray-500">
           What Our Students Say
         </h2>
-        <p className="text-center text-gray-800 mb-12 max-w-2xl mx-auto text-lg font-medium">
+        <p className="text-center text-gray-500 mb-12 max-w-2xl mx-auto text-lg font-medium">
           Hear from learners who have taken our courses and made real progress in their careers.
         </p>
         <div className="grid md:grid-cols-3 gap-10">

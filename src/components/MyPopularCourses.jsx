@@ -9,7 +9,9 @@ const MyPopularCourses = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://academix-server-side-inky.vercel.app/api/my-popular-courses?email=${user.email}`)
+      fetch(
+        `https://academix-server-side-inky.vercel.app/api/my-popular-courses?email=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setCourses(data);
@@ -47,7 +49,7 @@ const MyPopularCourses = () => {
         {courses.map((course) => (
           <div
             key={course._id}
-            className="card bg-base-100 shadow-xl hover:shadow-2xl transition duration-300"
+            className="card bg-base-200 shadow-xl hover:shadow-2xl transition duration-300"
           >
             <figure>
               <img
@@ -58,7 +60,7 @@ const MyPopularCourses = () => {
             </figure>
             <div className="card-body">
               <h2 className="card-title">{course.title}</h2>
-              <p className="text-sm text-gray-600">{course.shortDescription}</p>
+              <p className="text-sm text-gray-500">{course.shortDescription}</p>
               <div className="flex flex-wrap gap-2 mt-3 text-sm">
                 <span className="badge badge-info">{course.category}</span>
                 <span className="badge badge-outline">{course.level}</span>
@@ -70,7 +72,9 @@ const MyPopularCourses = () => {
               </div>
               <div className="card-actions justify-end mt-4">
                 <Link to={`/courses/${course._id}`}>
-                  <button className="btn btn-sm btn-primary">View Details</button>
+                  <button className="btn btn-sm bg-orange-400 hover:bg-orange-500 text-white">
+                    View Details
+                  </button>
                 </Link>
               </div>
             </div>

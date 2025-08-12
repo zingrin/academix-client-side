@@ -46,7 +46,7 @@ const InstructorCarousel = () => {
               />
               <h3 className="text-xl font-semibold">{inst.name}</h3>
               <p className="text-sm text-primary">{inst.specialty}</p>
-              <p className="mt-2 text-gray-600 text-sm">{inst.bio}</p>
+              <p className="mt-2 text-gray-300 text-sm">{inst.bio}</p>
               <div className="mt-3 text-sm text-yellow-500">
                 ⭐ {inst.rating} | 🎓 {inst.courses} Courses
               </div>

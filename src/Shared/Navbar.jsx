@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { NavLink } from "react-router"; 
 import { AuthContexts } from "../contexts/AuthContexts";
 import ThemeToggle from "../components/ThemeToggle";
-import { FaGraduationCap } from "react-icons/fa"; 
+import { FaGraduationCap } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContexts);
@@ -19,89 +19,172 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/courses">Courses</NavLink></li>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-orange-500 font-semibold"
+              : "hover:text-orange-400 transition"
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/courses"
+          className={({ isActive }) =>
+            isActive
+              ? "text-orange-500 font-semibold"
+              : "hover:text-orange-400 transition"
+          }
+        >
+          Courses
+        </NavLink>
+      </li>
       {user && (
         <>
-          <li><NavLink to="/my-enrollments">My Enrollment Course</NavLink></li>
-          <li><NavLink to="/addCourse">Add Course</NavLink></li>
-          <li><NavLink to="/manageCourse">Manage Course</NavLink></li>
+          <li>
+            <NavLink
+              to="/my-enrollments"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-500 font-semibold"
+                  : "hover:text-orange-400 transition"
+              }
+            >
+              My Enrollment Course
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/addCourse"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-500 font-semibold"
+                  : "hover:text-orange-400 transition"
+              }
+            >
+              Add Course
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/manageCourse"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-orange-500 font-semibold"
+                  : "hover:text-orange-400 transition"
+              }
+            >
+              Manage Course
+            </NavLink>
+          </li>
         </>
       )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 font-semibold relative w-11/12 mx-auto">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round"
-                strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-            </svg>
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-blue-400 to-blue-500 shadow-lg">
+      <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between h-16">
+        {/* Logo + Mobile Menu */}
+        <div className="flex items-center gap-4">
+          {/* Mobile hamburger */}
+          <div className="lg:hidden dropdown">
+            <label tabIndex={0} className="btn btn-ghost btn-circle text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-4 shadow bg-blue-300 rounded-box w-52 text-white"
+            >
+              {links}
+            </ul>
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
-            {links}
-          </ul>
+
+          {/* Logo */}
+          <NavLink
+            to="/"
+            className="flex items-center gap-2 text-white font-bold text-2xl hover:text-orange-400 transition"
+          >
+            <FaGraduationCap className="text-3xl" />
+            Academix
+          </NavLink>
         </div>
 
-        {/* ✅ Logo and Text */}
-        <NavLink to="/" className="btn btn-ghost text-xl font-bold flex items-center gap-2">
-          <FaGraduationCap className="text-2xl text-primary" />
-          Academix
-        </NavLink>
-      </div>
+        {/* Menu Links - Desktop */}
+        <ul className="menu menu-horizontal px-1 hidden lg:flex text-white font-semibold gap-6">
+          {links}
+        </ul>
 
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div>
-
-      <div className="navbar-end space-x-2 relative">
-        <ThemeToggle />
-        {user ? (
-          <div className="relative">
-            <img
-              src={user?.photoURL}
-              onClick={() => setShowProfile(!showProfile)}
-              alt="profile"
-              referrerPolicy="no-referrer"
-              className="w-10 h-10 rounded-full border-2 border-white cursor-pointer"
-            />
-
-            {showProfile && (
-              <div className="absolute top-12 right-0 w-64 bg-white p-4 rounded-lg shadow-lg border z-50">
-                <div className="text-center">
-                  <img
-                    src={user?.photoURL}
-                    alt="User"
-                    className="w-12 h-12 mx-auto rounded-full mb-2 border"
-                  />
-                  <p className="font-bold">{user?.displayName || "User"}</p>
-                  <p className="text-sm text-gray-500">{user?.email}</p>
+        {/* Right side - Theme toggle + User */}
+        <div className="flex items-center gap-4 relative text-white">
+          <ThemeToggle />
+          {user ? (
+            <div className="relative">
+              <img
+                src={user.photoURL}
+                onClick={() => setShowProfile(!showProfile)}
+                alt="profile"
+                referrerPolicy="no-referrer"
+                className="w-10 h-10 rounded-full border-2 border-white cursor-pointer hover:ring-2 ring-orange-400 transition"
+              />
+              {showProfile && (
+                <div className="absolute right-0 mt-2 w-64 bg-white text-gray-900 p-4 rounded-lg shadow-lg border z-50">
+                  <div className="text-center">
+                    <img
+                      src={user.photoURL}
+                      alt="User"
+                      className="w-12 h-12 mx-auto rounded-full mb-2 border"
+                    />
+                    <p className="font-bold">{user.displayName || "User"}</p>
+                    <p className="text-sm text-gray-600 truncate">
+                      {user.email}
+                    </p>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-error btn-sm w-full mt-4"
+                  >
+                    Logout
+                  </button>
                 </div>
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-error btn-sm w-full mt-3"
-                >
-                  Logout
-                </button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <>
-            <NavLink to="/register" className="btn btn-outline btn-sm">
-              Register
-            </NavLink>
-            <NavLink to="/signIn" className="btn btn-primary btn-sm">
-              Sign In
-            </NavLink>
-          </>
-        )}
+              )}
+            </div>
+          ) : (
+            <>
+              <NavLink
+                to="/register"
+                className="btn btn-outline btn-sm text-white border-white hover:bg-white hover:text-blue-300 transition"
+              >
+                Register
+              </NavLink>
+              <NavLink
+                to="/signIn"
+                className="btn btn-sm bg-orange-500 border-none hover:bg-orange-600 text-white"
+              >
+                Sign In
+              </NavLink>
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
