@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 
 const SpecialOffers = () => {
-  const offers = useSelector((state) => state.offers.list); // total 12 cards
+  const offers = useSelector((state) => state.offers.list); 
   const scrollRef = useRef();
 
   const scroll = (direction) => {
@@ -22,7 +22,7 @@ const SpecialOffers = () => {
         {/* Left Side: Banner */}
         <div
           className="w-full lg:w-1/2 h-96 lg:h-[calc(100vh-2rem)] rounded-xl overflow-hidden relative bg-cover bg-center"
-          style={{ backgroundImage: "url('https://i.ibb.co/ygVgZyP/web-design.jpg')" }}
+          style={{ backgroundImage: "url('https://i.ibb.co/TDKQdYdF/Cassandra-Training-Unlock-the-Potential-of-No-SQL-Database-Management.jpg')" }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
           <div className="absolute bottom-6 left-6 lg:bottom-12 lg:left-12 text-white">
@@ -40,13 +40,13 @@ const SpecialOffers = () => {
           {/* Arrow buttons */}
           <button
             onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-orange-500 hover:text-white transition"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-base-200 p-2 rounded-full shadow hover:bg-orange-500 hover:text-white transition"
           >
             &lt;
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white p-2 rounded-full shadow hover:bg-orange-500 hover:text-white transition"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-base-200 p-2 rounded-full shadow hover:bg-orange-500 hover:text-white transition"
           >
             &gt;
           </button>
@@ -60,7 +60,7 @@ const SpecialOffers = () => {
               <div key={blockIdx} className="flex-shrink-0 w-full">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {offers.slice(blockIdx * 6, blockIdx * 6 + 6).map((offer) => (
-                    <div key={offer.id} className="bg-white rounded-xl shadow p-4">
+                    <div key={offer.id} className="bg-base-200 rounded-xl shadow p-4">
                       <img
                         src={offer.img}
                         alt={offer.title}
