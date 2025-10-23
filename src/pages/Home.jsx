@@ -8,6 +8,7 @@ import BannerSlider from "../components/Slider";
 import { Helmet } from "react-helmet-async";
 import Features from "./Features";
 import Services from "./Services";
+import SkillsSection from "../components/SkillsSection";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
 
       <div>
         <BannerSlider></BannerSlider>
+        <SkillsSection></SkillsSection>
         <Courses></Courses>
         <MyPopularCourses></MyPopularCourses>
         <Features></Features>
