@@ -10,6 +10,7 @@ import Features from "./Features";
 import Services from "./Services";
 import SkillsSection from "../components/SkillsSection";
 import SpecialOffers from "../components/SpecialOffersSlider";
+import CareerAccelerators from "../components/CareerAccelerators";
 
 const Home = () => {
   return (
@@ -24,9 +25,11 @@ const Home = () => {
         <Courses></Courses>
         <MyPopularCourses></MyPopularCourses>
         <SpecialOffers></SpecialOffers>
+        <CareerAccelerators></CareerAccelerators>
+        <InstructorCarousel></InstructorCarousel>
+
         <Features></Features>
         <Services></Services>
-        <InstructorCarousel></InstructorCarousel>
         <StudentFeedback></StudentFeedback>
         <Achievements></Achievements>
       </div>
