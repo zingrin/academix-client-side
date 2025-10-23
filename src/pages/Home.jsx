@@ -9,6 +9,7 @@ import { Helmet } from "react-helmet-async";
 import Features from "./Features";
 import Services from "./Services";
 import SkillsSection from "../components/SkillsSection";
+import SpecialOffers from "../components/SpecialOffersSlider";
 
 const Home = () => {
   return (
@@ -22,6 +23,7 @@ const Home = () => {
         <SkillsSection></SkillsSection>
         <Courses></Courses>
         <MyPopularCourses></MyPopularCourses>
+        <SpecialOffers></SpecialOffers>
         <Features></Features>
         <Services></Services>
         <InstructorCarousel></InstructorCarousel>
